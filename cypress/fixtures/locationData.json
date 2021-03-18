@@ -1,0 +1,12 @@
+{
+    "locationRequestData": {
+        "pathParam": "",
+        "payload": {
+            "address": "Street",
+            "brandId": "",
+            "city": "City",
+            "countryCode": "GBR",
+            "postcode": "W1D 3PX"
+        }
+    }
+}
