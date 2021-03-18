@@ -4,7 +4,7 @@ Test project to validade the endpoints Create program, Create Brand and Create l
 
 ## Project Structure
 
-### Fixturesest 
+### Fixtures
 
 * AuthData: contains input data needed to authentication requests
 * brandData: contains input data needed to brand endpoint requests
