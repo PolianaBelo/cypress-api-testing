@@ -4,7 +4,7 @@ Cypress.Commands.add('getBrand', getBrand);
 let brandHeaders = {
     'content-type': 'application/json',
     'authorization': 'Bearer '+ localStorage.getItem('authHeader'),
-    'fidel-key': "dashboard_" + localStorage.getItem('idToken'),
+    'fidel-key': 'dashboard_' + localStorage.getItem('idToken'),
     'fidel-live': 'false',
     'fidel-version': '2019-03-05',
     'origin': 'https://dashboard.fidel.uk',
@@ -15,7 +15,6 @@ let brandHeaders = {
 }
 
 function createBrand(payload) {
-
     return cy.request({
         method: 'POST',
         failOnStatusCode: false,

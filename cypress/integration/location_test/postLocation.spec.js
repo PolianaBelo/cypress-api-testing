@@ -1,35 +1,32 @@
 import "cypress-localstorage-commands";
 
-describe('Create Location 201', () => {
-
-    Cypress.config('baseUrl', 'https://api.fidel.uk/v1');
-    let authPayload;
+describe('Create Location validations', () => {
     let locationRequestData;
+    let nameComplement = Math.random().toString();
 
     before(() => {
-        cy.fixture('authData.json').then((data) => {
-            authPayload = data.authPayload
-        });
         cy.fixture('locationData.json').then((data) => {
             locationRequestData = data.locationRequestData
         });
     });
 
-    beforeEach(() => {
-        cy.authenticate(authPayload);
+    before(() => {
+        cy.authenticate();
 
-        cy.createProgram({ 'name': "Program" + Math.random().toString() }).then((response) => {
+        cy.createProgram({ 'name': "Program" + nameComplement }).then((response) => {
             window.localStorage.setItem('programId', response.body.items[0].id);
-        }).then(() => {locationRequestData.pathParam = localStorage.getItem('programId');});
+        }).then(() => { locationRequestData.pathParam = localStorage.getItem('programId'); });
 
-        cy.createBrand({ 'name': "Brand" + Math.random().toString() }).then((response) => {
+        cy.createBrand({ 'name': "Brand" + nameComplement }).then((response) => {
             window.localStorage.setItem('brandId', response.body.items[0].id);
-        }).then(() => {locationRequestData.payload.brandId = localStorage.getItem('brandId');});
+        }).then(() => { locationRequestData.payload.brandId = localStorage.getItem('brandId'); });
     });
 
     it('Should creat a progam and let the inserted location available through get request', () => {
         cy.createLocation(locationRequestData).then((response) => {
             expect(response.status).to.eq(201);
+            expect(response.body).to.have.property('items');
+            expect(cy.getLocation(response.body.items[0].id).then((response) => { expect(response.status).to.eq(200) }));
         })
     });
 

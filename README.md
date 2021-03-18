@@ -4,7 +4,7 @@ Test project to validade the endpoints Create program, Create Brand and Create l
 
 ## Project Structure
 
-### Fixtures
+### Fixturesest 
 
 * AuthData: contains input data needed to authentication requests
 * brandData: contains input data needed to brand endpoint requests
@@ -12,11 +12,11 @@ Test project to validade the endpoints Create program, Create Brand and Create l
 
 ### Integration
 
-* Contains the folders that group the test suites for each endpoint
+* Holds the test files that are grouped by each endpoint
 
 ### Support
 
-* Contains the implementation of the request required for the test suites
+* Holds the implementation of the requests required for the test suites
 * The list of the implemented requests is available in commands.js
 
 ## Getting Started

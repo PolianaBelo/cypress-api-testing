@@ -1,4 +1,5 @@
 import jwt_decode from "jwt-decode";
+import authData from '../fixtures/authData.json';
 
 Cypress.Commands.add('authenticate', authenticate);
 
@@ -18,23 +19,23 @@ let authHeaders = {
     'x-amz-user-agent': 'aws-amplify/0.1.x js'
 }
 
-function authenticate(payload) {
+function authenticate() {
     return cy.request({
         method: 'POST',
         url: 'https://cognito-idp.eu-west-1.amazonaws.com/',
         headers: authHeaders,
         body: {
-            'AuthFlow': "USER_PASSWORD_AUTH",
-            'ClientId': "2l84ru0poltttsr6o28661dbt8",
-            'AuthParameters': payload,
+            'AuthFlow': 'USER_PASSWORD_AUTH',
+            'ClientId': '2l84ru0poltttsr6o28661dbt8',
+            'AuthParameters': authData.authPayload,
             'ClientMetadata': {}
         }
     }).then((response) => {
         var authIdToken = decodeToken(response.body.AuthenticationResult.IdToken);
         var permissionData = JSON.parse(authIdToken.permission);
 
-        window.localStorage.setItem("authHeader", response.body.AuthenticationResult.IdToken);
-        window.localStorage.setItem("idToken", permissionData.credentialId);
+        window.localStorage.setItem('authHeader', response.body.AuthenticationResult.IdToken);
+        window.localStorage.setItem('idToken', permissionData.credentialId);
     })
 };
 

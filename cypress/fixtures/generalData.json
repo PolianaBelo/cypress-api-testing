@@ -1,0 +1,14 @@
+{
+    "commonHeaders": {
+        "content-type": "application/json",
+        "authorization": "Bearer ",
+        "fidel-key": "dashboard_",
+        "fidel-live": "false",
+        "fidel-version": "2019-03-05",
+        "origin": "https://dashboard.fidel.uk",
+        "referer":"https://dashboard.fidel.uk/",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-site"
+    }
+}

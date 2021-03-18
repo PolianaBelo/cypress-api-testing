@@ -1,23 +1,11 @@
 import "cypress-localstorage-commands";
 
-describe('Create Brand success', () => {
-    Cypress.config('baseUrl', 'https://api.fidel.uk/v1');
-    let authPayload;
+describe('Create Brand validations', () => {
     let invalidSchemaBrandPayload;
     let repeatedBrandPayload;
 
     before(() => {
-        cy.fixture('authData.json').then((data) => {
-            authPayload = data.authPayload
-        });
-        cy.fixture('brandData.json').then((data) => {
-            repeatedBrandPayload = data.repeatedBrandPayload;
-            invalidSchemaBrandPayload = data.invalidSchemaBrandPayload;
-        });
-    });
-
-    beforeEach(() => {
-        cy.authenticate(authPayload);
+        cy.authenticate();
     });
 
     it('Should return 201 and let the inserted brand available through get request', () => {
@@ -29,6 +17,12 @@ describe('Create Brand success', () => {
         })
     });
 
+    before(() => {
+        cy.fixture('brandData.json').then((data) => {
+            repeatedBrandPayload = data.repeatedBrandPayload;
+        });
+    });
+
     it('Shoud return 400 - Bad Request - Item already exists', () => {
         cy.createBrand(repeatedBrandPayload).then((response) => {
             expect(response.status).to.eq(400);
@@ -36,6 +30,12 @@ describe('Create Brand success', () => {
         })
     });
 
+    before(() => {
+        cy.fixture('brandData.json').then((data) => {
+            invalidSchemaBrandPayload = data.invalidSchemaBrandPayload;
+        });
+    });
+    
     it('Shoud return 400 - Bad Request - should have required property name', () => {
         cy.createBrand(invalidSchemaBrandPayload).then((response) => {
             expect(response.status).to.eq(400);
