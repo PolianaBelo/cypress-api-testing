@@ -24,7 +24,7 @@ describe('Create Brand validations', () => {
         });
     });
 
-    it('Shoud return 400 - Bad Request - Item already exists', () => {
+    it('Should return 400 - Bad Request - Item already exists', () => {
         cy.createBrand(repeatedBrandPayload).then((response) => {
             expect(response.status).to.eq(400);
             expect(response.body.error.message).to.eq('Item already exists');
@@ -37,7 +37,7 @@ describe('Create Brand validations', () => {
         });
     });
 
-    it('Shoud return 400 - Bad Request - should have required property name', () => {
+    it('Should return 400 - Bad Request - should have required property name', () => {
         cy.createBrand(invalidSchemaBrandPayload).then((response) => {
             expect(response.status).to.eq(400);
             expect(response.body.error.message).to.eq('Invalid schema');

@@ -34,7 +34,7 @@ describe('Create Location validations', () => {
         })
     });
 
-    it('Shoud return 400 - Bad Request - Invalid schema - Missing Address', () => {
+    it('Should return 400 - Bad Request - Invalid schema - Missing Address', () => {
         delete locationRequestData.payload['address'];
         cy.createLocation(locationRequestData).then((response) => {
             expect(response.status).to.eq(400);
