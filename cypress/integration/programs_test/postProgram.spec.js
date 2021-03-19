@@ -5,10 +5,15 @@ describe('Create Programs validations', () => {
 
     before(() => {
         cy.authenticate();
-      });
+        cy.saveLocalStorage();
+    });
+
+    beforeEach(() => {
+        cy.restoreLocalStorage();
+    });
 
     it('Should creat a progam and return 201 and itens in JSON data', () => {
-        var payload = {name: "Program" + Math.random().toString()};
+        var payload = { name: "Program" + Math.random().toString() };
         cy.createProgram(payload).then((response) => {
             expect(response.status).to.eq(201);
             expect(response.body).to.have.property('items');

@@ -6,6 +6,7 @@ describe('Create Brand validations', () => {
 
     before(() => {
         cy.authenticate();
+        cy.saveLocalStorage();
     });
 
     it('Should return 201 and let the inserted brand available through get request', () => {
@@ -35,7 +36,7 @@ describe('Create Brand validations', () => {
             invalidSchemaBrandPayload = data.invalidSchemaBrandPayload;
         });
     });
-    
+
     it('Shoud return 400 - Bad Request - should have required property name', () => {
         cy.createBrand(invalidSchemaBrandPayload).then((response) => {
             expect(response.status).to.eq(400);

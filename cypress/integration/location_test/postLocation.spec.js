@@ -5,14 +5,14 @@ describe('Create Location validations', () => {
     let nameComplement = Math.random().toString();
 
     before(() => {
+        cy.authenticate();
         cy.fixture('locationData.json').then((data) => {
             locationRequestData = data.locationRequestData
         });
+        cy.saveLocalStorage();
     });
 
     before(() => {
-        cy.authenticate();
-
         cy.createProgram({ 'name': "Program" + nameComplement }).then((response) => {
             window.localStorage.setItem('programId', response.body.items[0].id);
         }).then(() => { locationRequestData.pathParam = localStorage.getItem('programId'); });
@@ -20,6 +20,10 @@ describe('Create Location validations', () => {
         cy.createBrand({ 'name': "Brand" + nameComplement }).then((response) => {
             window.localStorage.setItem('brandId', response.body.items[0].id);
         }).then(() => { locationRequestData.payload.brandId = localStorage.getItem('brandId'); });
+    });
+
+    beforeEach(() => {
+        cy.restoreLocalStorage();
     });
 
     it('Should creat a progam and let the inserted location available through get request', () => {
