@@ -1,14 +1,12 @@
-import "cypress-localstorage-commands";
-
 describe('Create Programs validations', () => {
     let invalidSchemaProgramPayload;
 
     before(() => {
         cy.authenticate();
-      });
+    });
 
-    it('Should creat a progam and return 201 and itens in JSON data', () => {
-        var payload = {name: "Program" + Math.random().toString()};
+    it('Should creat a progam and let the inserted program available through get request', () => {
+        var payload = { name: "Program" + Math.random().toString() };
         cy.createProgram(payload).then((response) => {
             expect(response.status).to.eq(201);
             expect(response.body).to.have.property('items');
@@ -22,7 +20,7 @@ describe('Create Programs validations', () => {
         });
     });
 
-    it('Shoud return 400 - Bad Request - should have required property name', () => {
+    it('Should return 400 - Bad Request - should have required property name', () => {
         cy.createProgram(invalidSchemaProgramPayload).then((response) => {
             expect(response.status).to.eq(400);
             expect(response.body.error.message).to.eq('Invalid schema')

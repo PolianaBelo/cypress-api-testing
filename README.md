@@ -1,6 +1,6 @@
 # Cypress API Testing
 
-Test project to validade the endpoints Create program, Create Brand and Create location from FIDEL API.
+Test project to validade the endpoints Create program, Create Brand and Create location from FIDEL API (https://reference.fidel.uk/reference). It was developed using Visual Studio Code.
 
 ## Project Structure
 
@@ -17,12 +17,10 @@ Test project to validade the endpoints Create program, Create Brand and Create l
 ### Support
 
 * Holds the implementation of the requests required for the test suites
-* The list of the implemented requests is available in commands.js
 
 ## Getting Started
 
-The instructions bellow will help you to get the project up and running on your machine. It was developed
-using Visual Studio Code.
+The instructions bellow will help you to get the project up and running on your machine. It was developed using Visual Studio Code.
 
 ### Prerequisites
 

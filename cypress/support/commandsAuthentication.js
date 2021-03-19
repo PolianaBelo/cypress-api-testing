@@ -2,6 +2,7 @@ import jwt_decode from "jwt-decode";
 import authData from '../fixtures/authData.json';
 
 Cypress.Commands.add('authenticate', authenticate);
+Cypress.config('baseUrl', 'https://api.fidel.uk/v1');
 
 let authHeaders = {
     'accept': '*/*',

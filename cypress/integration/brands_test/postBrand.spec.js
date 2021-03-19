@@ -1,5 +1,3 @@
-import "cypress-localstorage-commands";
-
 describe('Create Brand validations', () => {
     let invalidSchemaBrandPayload;
     let repeatedBrandPayload;
@@ -8,7 +6,7 @@ describe('Create Brand validations', () => {
         cy.authenticate();
     });
 
-    it('Should return 201 and let the inserted brand available through get request', () => {
+    it('Should create a Brand and let the inserted brand available through get request', () => {
         var payload = { 'name': "Brand" + Math.random().toString() };
         cy.createBrand(payload).then((response) => {
             expect(response.status).to.eq(201);
@@ -23,7 +21,7 @@ describe('Create Brand validations', () => {
         });
     });
 
-    it('Shoud return 400 - Bad Request - Item already exists', () => {
+    it('Should return 400 - Bad Request - Item already exists', () => {
         cy.createBrand(repeatedBrandPayload).then((response) => {
             expect(response.status).to.eq(400);
             expect(response.body.error.message).to.eq('Item already exists');
@@ -35,7 +33,7 @@ describe('Create Brand validations', () => {
             invalidSchemaBrandPayload = data.invalidSchemaBrandPayload;
         });
     });
-    
+
     it('Shoud return 400 - Bad Request - should have required property name', () => {
         cy.createBrand(invalidSchemaBrandPayload).then((response) => {
             expect(response.status).to.eq(400);

@@ -1,10 +1,12 @@
+import authData from '../fixtures/authData.json';
+
 Cypress.Commands.add('createBrand', createBrand);
 Cypress.Commands.add('getBrand', getBrand);
 
 let brandHeaders = {
     'content-type': 'application/json',
-    'authorization': 'Bearer '+ localStorage.getItem('authHeader'),
-    'fidel-key': 'dashboard_' + localStorage.getItem('idToken'),
+    'authorization': authData.authHeader,
+    'fidel-key': authData['fidel-key'],
     'fidel-live': 'false',
     'fidel-version': '2019-03-05',
     'origin': 'https://dashboard.fidel.uk',
