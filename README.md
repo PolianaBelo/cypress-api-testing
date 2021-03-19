@@ -6,9 +6,11 @@ Test project to validade the endpoints Create program, Create Brand and Create l
 
 ### Fixtures
 
-* AuthData: contains input data needed to authentication requests.
+* authData: contains input data needed to authentication requests.
 * brandData: contains input data needed to brand endpoint requests.
 * locationData: contains input data needed to location endpoint requests.
+* programData: contains input data needed to program endpoint requests.
+* generalData: contains input data common to multiple requests.
 
 ### Integration
 
@@ -20,7 +22,7 @@ Test project to validade the endpoints Create program, Create Brand and Create l
 
 ## Getting Started
 
-The instructions bellow will help you to get the project up and running on your machine. It was developed using Visual Studio Code.
+The instructions bellow will help you to get the project up and running on your machine.
 
 ### Prerequisites
 
