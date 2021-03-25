@@ -34,8 +34,8 @@ function authenticate() {
         var authIdToken = decodeToken(response.body.AuthenticationResult.IdToken);
         var permissionData = JSON.parse(authIdToken.permission);
 
-        window.localStorage.setItem('authHeader', response.body.AuthenticationResult.IdToken);
-        window.localStorage.setItem('idToken', permissionData.credentialId);
+        cy.setLocalStorage('authHeader', response.body.AuthenticationResult.IdToken);
+        cy.setLocalStorage('idToken', permissionData.credentialId);
     })
 };
 

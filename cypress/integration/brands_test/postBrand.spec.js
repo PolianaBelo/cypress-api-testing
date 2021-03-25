@@ -9,6 +9,10 @@ describe('Create Brand validations', () => {
         cy.saveLocalStorage();
     });
 
+    beforeEach(() => {
+        cy.restoreLocalStorage();
+    });
+
     it('Should return 201 and let the inserted brand available through get request', () => {
         var payload = { 'name': "Brand" + Math.random().toString() };
         cy.createBrand(payload).then((response) => {
