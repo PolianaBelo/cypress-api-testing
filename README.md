@@ -1,6 +1,6 @@
 # Cypress API Testing
 
-Test project to validade the endpoints Create program, Create Brand and Create location from FIDEL API.
+Test project to validade the endpoints Create program, Create Brand and Create location from the API.
 
 ## Project Structure
 
